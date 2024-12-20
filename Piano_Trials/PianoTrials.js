@@ -6,23 +6,25 @@ import {
 
 import { Loader } from "./Loader.js";
 
+const baseUrl = "https://pianotrials.squidly.com.au/";
+
 const noteImages = [
-  "http://localhost:5502/images/pianotrials/note-1.png",
-  "http://localhost:5502/images/pianotrials/note-2.png",
-  "http://localhost:5502/images/pianotrials/note-3.png",
-  "http://localhost:5502/images/pianotrials/note-4.png",
-  "http://localhost:5502/images/pianotrials/note-5.png",
-  "http://localhost:5502/images/pianotrials/note-6.png",
-  "http://localhost:5502/images/pianotrials/note-7.png",
-  "http://localhost:5502/images/pianotrials/note-8.png",
-  "http://localhost:5502/images/pianotrials/note-9.png",
-  "http://localhost:5502/images/pianotrials/note-10.png",
-  "http://localhost:5502/images/pianotrials/note-11.png",
-  "http://localhost:5502/images/pianotrials/note-12.png",
-  "http://localhost:5502/images/pianotrials/note-13.png",
-  "http://localhost:5502/images/pianotrials/note-14.png",
-  "http://localhost:5502/images/pianotrials/note-15.png",
-  "http://localhost:5502/images/pianotrials/note-16.png",
+  `${baseUrl}images/pianotrials/note-1.png`,
+  `${baseUrl}images/pianotrials/note-2.png`,
+  `${baseUrl}images/pianotrials/note-3.png`,
+  `${baseUrl}images/pianotrials/note-4.png`,
+  `${baseUrl}images/pianotrials/note-5.png`,
+  `${baseUrl}images/pianotrials/note-6.png`,
+  `${baseUrl}images/pianotrials/note-7.png`,
+  `${baseUrl}images/pianotrials/note-8.png`,
+  `${baseUrl}images/pianotrials/note-9.png`,
+  `${baseUrl}images/pianotrials/note-10.png`,
+  `${baseUrl}images/pianotrials/note-11.png`,
+  `${baseUrl}images/pianotrials/note-12.png`,
+  `${baseUrl}images/pianotrials/note-13.png`,
+  `${baseUrl}images/pianotrials/note-14.png`,
+  `${baseUrl}images/pianotrials/note-15.png`,
+  `${baseUrl}images/pianotrials/note-16.png`,
 ];
 
 class PianoTrials extends SvgPlus {
@@ -77,7 +79,7 @@ class PianoTrials extends SvgPlus {
     
     this.landingPage.createChild("img", {
       id: "bg",
-      src: "http://localhost:5502/images/pianotrials/bg.jpg",
+      src: `${baseUrl}images/pianotrials/bg.jpg`,
       styles: {
         position: "absolute",
         top: "0",
@@ -130,7 +132,7 @@ class PianoTrials extends SvgPlus {
 
     logocontainer.createChild("img", {
       id: "logo",
-      src: "http://localhost:5502/images/pianotrials/musicgamehome.jpg",
+      src: `${baseUrl}images/pianotrials/musicgamehome.jpg`,
       styles: {
         position: "absolute",
         top: "50%",
@@ -143,7 +145,7 @@ class PianoTrials extends SvgPlus {
 
     this.playbutton = this.landingPage.createChild("img", {
       id: "playbutton",
-      src: "http://localhost:5502/images/pianotrials/playbutton.png",
+      src: `${baseUrl}images/pianotrials/playbutton.png`,
       styles: {
         position: "absolute",
         top: "80%",
@@ -173,7 +175,7 @@ class PianoTrials extends SvgPlus {
     if (this.editable) {
       this.backbutton = this.playPage.createChild("img", {
         id: "backbutton",
-        src: "http://localhost:5502/images/pianotrials/backbutton.png",
+        src: `${baseUrl}images/pianotrials/backbutton.png`,
         styles: {
           position: "absolute",
           top: "3%",
@@ -191,7 +193,7 @@ class PianoTrials extends SvgPlus {
 
     this.playPage.createChild("img", {
       id: "pianoContainer",
-      src: "http://localhost:5502/images/pianotrials/menu-bg@2x.jpg",
+      src: `${baseUrl}images/pianotrials/menu-bg@2x.jpg`,
       styles: {
         position: "absolute",
         top: "0",
@@ -219,14 +221,12 @@ class PianoTrials extends SvgPlus {
       this.currentInstrument = value;
       // animate based on the instrument on change
       // query selector the button with the id of the instrument
-      // const button = this.playPage.querySelector(`#${value}button`);
-      // this.animateInstrument(button);
       // clear the container background
       this.playPage.querySelectorAll(".containerbackground").forEach((container) => {
-        container.src = `http://localhost:5502/images/pianotrials/containerbackground.png`;
+        container.src = `${baseUrl}images/pianotrials/containerbackground.png`;
       });
       const instrument = this.playPage.querySelector(`#${value}-containerbackground`);
-      instrument.src = `http://localhost:5502/images/pianotrials/highlightcontainerbackground.png`;
+      instrument.src = `${baseUrl}images/pianotrials/highlightcontainerbackground.png`;
 
     });
     // set the initial instrument to piano
@@ -238,15 +238,6 @@ class PianoTrials extends SvgPlus {
     });
     // set the initial volume to 0.5
     this.app.set("volume", 0.5);
-
-    // // Track cursor position
-    // this.cursorX = 0;
-    // this.cursorY = 0;
-    // window.addEventListener("mousemove", (event) => {
-    //   this.cursorX = event.clientX;
-    //   this.cursorY = event.clientY;
-    // });
-    // this.app.set("state", "landing");
 
     this.app.onValue("state", (value) => {
       if (!value) this.State = { page: "landing" };
@@ -494,7 +485,7 @@ header input {
     // const upperKey = key.toUpperCase();
     // console.log(upperKey);
     const audio = new Audio(
-      `http://localhost:5502/sounds/pianotrials/${this.currentInstrument}-${key}.mp3`
+      `${baseUrl}sounds/pianotrials/${this.currentInstrument}-${key}.mp3`
     );
     audio.volume = this.currentVolume;
     audio.play();
@@ -579,7 +570,7 @@ header input {
     this.pianocontainer.createChild("img", {
       id: "piano-containerbackground",
       class: "containerbackground",
-      src: `http://localhost:5502/images/pianotrials/containerbackground.png`,
+      src: `${baseUrl}images/pianotrials/containerbackground.png`,
       styles: {
         width: "100%",
         height: "100%",
@@ -591,7 +582,7 @@ header input {
     this.pianocontainer.createChild("img", {
       id: "pianoimg",
       class: "instrumentimg",
-      src: `http://localhost:5502/images/pianotrials/piano1.png`,
+      src: `${baseUrl}images/pianotrials/piano1.png`,
       styles: {
         width: "70%",
         height: "70%",
@@ -624,7 +615,7 @@ header input {
     this.guitarcontainer.createChild("img", {
       id: "guitar-containerbackground",
       class: "containerbackground",
-      src: `http://localhost:5502/images/pianotrials/containerbackground.png`,
+      src: `${baseUrl}images/pianotrials/containerbackground.png`,
       styles: {
         width: "100%",
         height: "100%",
@@ -636,7 +627,7 @@ header input {
     this.guitarcontainer.createChild("img", {
       id: "guitarimg",
       class: "instrumentimg",
-      src: `http://localhost:5502/images/pianotrials/guitar.png`,
+      src: `${baseUrl}images/pianotrials/guitar.png`,
       styles: {
         width: "70%",
         height: "70%",
@@ -650,7 +641,6 @@ header input {
 
     this.guitarcontainer.addEventListener("click", () => {
       this.app.set("instrument", "guitar");
-      // this.animateInstrument(this.guitarbutton);
       console.log(this.currentInstrument);
     });
 
@@ -669,7 +659,7 @@ header input {
     this.violincontainer.createChild("img", {
       id: "violin-containerbackground",
       class: "containerbackground",
-      src: `http://localhost:5502/images/pianotrials/containerbackground.png`,
+      src: `${baseUrl}images/pianotrials/containerbackground.png`,
       styles: {
         width: "100%",
         height: "100%",
@@ -681,7 +671,7 @@ header input {
     this.violincontainer.createChild("img", {
       id: "violinimg",
       class: "instrumentimg",
-      src: `http://localhost:5502/images/pianotrials/violin.png`,
+      src: `${baseUrl}images/pianotrials/violin.png`,
       styles: {
         width: "70%",
         height: "70%",
@@ -696,8 +686,6 @@ header input {
 
     this.violincontainer.addEventListener("click", () => {
       this.app.set("instrument", "violin");
-      // this.animateInstrument(this.violinbutton);
-      console.log(this.currentInstrument);
     });
 
     // trumpet.png
@@ -715,7 +703,7 @@ header input {
     this.trumpetcontainer.createChild("img", {
       id: "trumpet-containerbackground",
       class: "containerbackground",
-      src: `http://localhost:5502/images/pianotrials/containerbackground.png`,
+      src: `${baseUrl}images/pianotrials/containerbackground.png`,
       styles: {
         width: "100%",
         height: "100%",
@@ -727,7 +715,7 @@ header input {
     this.trumpetcontainer.createChild("img", {
       id: "trumpetimg",
       class: "instrumentimg",
-      src: `http://localhost:5502/images/pianotrials/trumpet.png`,
+      src: `${baseUrl}images/pianotrials/trumpet.png`,
       styles: {
         width: "70%",
         height: "50%",
@@ -742,8 +730,6 @@ header input {
 
     this.trumpetcontainer.addEventListener("click", () => {
       this.app.set("instrument", "trumpet");
-      // this.animateInstrument(this.trumpetbutton);
-      console.log(this.currentInstrument);
     });
 
     // create the piano header
@@ -814,7 +800,6 @@ header input {
       id: "keyscheckboxdiv",
       class: "keys-checkbox",
       styles: {
-        // width: "50%",
         display: "flex",
         "justify-content": "center",
         "align-items": "center",
@@ -856,8 +841,6 @@ header input {
     });
 
     keys.forEach((key) => {
-      // const wrapperDiv = this.keyslist.createChild("div");
-      // wrapperDiv.class = `key-wrapper`;
       const li = this.keyslist.createChild("li", {
         id: `key-${key.key}`,
         class: `key ${key.class} ${key.key}button`,
@@ -881,8 +864,6 @@ header input {
           "margin-right": key.class === "black" ? "-3.5vw" : "0",
         },
       });
-      // wrapperDiv.appendChild(li);
-      // this.keyslist.appendChild(wrapperDiv);
       // Create the <span> element inside the <li>
       li.createChild("span", {
         id: `keyname-${key.key}`,
@@ -899,7 +880,6 @@ header input {
       });
       //  add event listener to play the audio
       li.addEventListener("click", () => {
-        // this.playAudio(key.key);
         const noteWithTimestamp = `${key.key}-${Date.now()}`;
         this.app.set("noteToPlay", noteWithTimestamp);
       });
@@ -949,10 +929,7 @@ header input {
     noteElement.style.position = "absolute";
     noteElement.style.left = `${startX}px`;
     noteElement.style.top = `${startY}px`;
-    // noteElement.style.color = "#fff";
-    // noteElement.style.fontSize = "1.5rem";
     noteElement.style.width = "30px";
-    // noteElement.style.height = "30px";
     noteElement.style.transition = "transform 1s ease-out, opacity 1s ease-out";
     noteElement.style.zIndex = "1000";
     this.shadow.appendChild(noteElement);
@@ -1090,8 +1067,6 @@ header input {
         });
 
         const loader = new Loader();
-        // loader.progress = 0.5;
-        // loader.position = elementpos;
         loader.size = 5;
         const rect = keyWrapper.getBoundingClientRect();
         const newPos = new Vector(rect.width / 2, rect.height / 2);

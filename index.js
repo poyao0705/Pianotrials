@@ -1050,13 +1050,13 @@ export default class GameApp extends SquidlyApp {
   }
 
   static get description() {
-    return "Paint with your eyes!";
+    return "Play piano with your eyes!";
   }
 
   static get appIcon() {
     let icon = new SvgPlus("img");
     icon.props = {
-      src: "https://eyepaint.squidly.com.au/images/EyePaint/example_eyepaint_logo.jpg",
+      src: "https://pianotrials.squidly.com.au/images/pianotrials/pianoicon.png",
       styles: { width: "100%", height: "100%" },
     };
     return icon;
