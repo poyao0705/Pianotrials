@@ -6,7 +6,8 @@ import {
 
 import { Loader } from "./Loader.js";
 
-const baseUrl = "https://pianotrials.squidly.com.au/";
+const baseUrl = import.meta.url.split("/").slice(0, -2).join("/") + "/";
+// const baseUrl = "https://pianotrials.squidly.com.au/";
 
 const noteImages = [
   `${baseUrl}images/pianotrials/note-1.png`,
@@ -30,6 +31,7 @@ const noteImages = [
 class PianoTrials extends SvgPlus {
   constructor(editable, app) {
     super("div");
+    console.log("baseUrl:", baseUrl);
     // let shadow = this.attachShadow({mode: "open"})
     // let rel = this.createChild("div", {class: "rel"});
     // shadow.appendChild(rel);
