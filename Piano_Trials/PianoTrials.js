@@ -87,20 +87,48 @@ class PianoTrials extends SvgPlus {
       },
     });
 
-    this.landingPage.createChild("img", {
-      id: "bgframe",
-      src: "http://localhost:5502/images/pianotrials/bgframe.png",
+    this.landingPage.createChild("div", {
+      id: "whiteMask",
+      styles: {
+        position: "absolute",
+        top: "0",
+        left: "0",
+        width: "100%",
+        height: "100%",
+        background: "rgba(255, 255, 255, 0.05)", // Adjust the last number (0.3) to control opacity
+        "pointer-events": "none", // This ensures clicks pass through to elements below
+        "z-index": "1" // Adjust this value to control what the mask appears above/below
+      }
+    });
+
+    const bgframecontainer = this.landingPage.createChild("div", {
+      // bg frame container
+      id: "bgframecontainer",
+      styles: {
+        position: "absolute",
+        top: "0",
+        left: "0",
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        "justify-content": "center",
+        "align-items": "center"
+      },
+    });
+
+    const logocontainer = bgframecontainer.createChild("div", {
+      id: "logoContainer",
       styles: {
         position: "absolute",
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
-        width: "60%",
-        height: "auto",
+        width: "100%",
+        height: "100%",
       },
     });
 
-    this.landingPage.createChild("img", {
+    logocontainer.createChild("img", {
       id: "logo",
       src: "http://localhost:5502/images/pianotrials/musicgamehome.jpg",
       styles: {
@@ -108,8 +136,8 @@ class PianoTrials extends SvgPlus {
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
-        width: "55%",
-        height: "80%",
+        width: "100%",
+        height: "auto",
       },
     });
 
@@ -118,7 +146,7 @@ class PianoTrials extends SvgPlus {
       src: "http://localhost:5502/images/pianotrials/playbutton.png",
       styles: {
         position: "absolute",
-        top: "77%",
+        top: "80%",
         left: "50%",
         transform: "translate(-50%, -50%)",
         width: "10%",
@@ -732,7 +760,7 @@ header input {
     // create the piano title
     this.pianotitle = this.pianoheader.createChild("h2", {
       id: "pianotitle",
-      content: "Playable Piano",
+      content: "World Orchestra",
       styles: {
         "text-transform": "uppercase",
         flex: "1",
