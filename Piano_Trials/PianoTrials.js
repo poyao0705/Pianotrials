@@ -956,6 +956,7 @@ header input {
     let x = vector.x;
     let y = vector.y;
     let items = this.playPage.querySelectorAll(".instrumentcontainer, li");
+    ////////
     // check if it is black key or white key
     // step 1: query all the keys
     // step 2: find if the coordinates are in the keys
