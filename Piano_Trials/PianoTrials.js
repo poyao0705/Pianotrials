@@ -515,11 +515,11 @@ header input {
       { class: "white", key: "a2", display: "A" },
       { class: "black", key: "bb2", display: "A#" },
       { class: "white", key: "b2", display: "B" },
-      { class: "white", key: "c3", display: "C" },
-      { class: "black", key: "db3", display: "C#" },
-      { class: "white", key: "d3", display: "D" },
-      { class: "black", key: "eb3", display: "D#" },
-      { class: "white", key: "e3", display: "E" },
+      // { class: "white", key: "c3", display: "C" },
+      // { class: "black", key: "db3", display: "C#" },
+      // { class: "white", key: "d3", display: "D" },
+      // { class: "black", key: "eb3", display: "D#" },
+      // { class: "white", key: "e3", display: "E" },
     ];
 
     // create the piano frame
