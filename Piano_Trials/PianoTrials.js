@@ -953,21 +953,40 @@ header input {
   }
 
   checkVectorOnItem(vector) {
+    // let x = vector.x;
+    // let y = vector.y;
+    // let items = this.playPage.querySelectorAll(".instrumentcontainer, li");
+    // ////////
+    // // check if it is black key or white key
+    // // step 1: query all the keys
+    // // step 2: find if the coordinates are in the keys
+    // // step 3: if it is on black key and white key, always return the black key first
+
+    // for (let i = 0; i < items.length; i++) {
+    //   let item = items[i];
+    //   let rect = item.getBoundingClientRect();
+    //   if (x > rect.left && x < rect.right && y > rect.top && y < rect.bottom) {
+    //     console.log("item", item);
+    //     return item;
+    //   }
+    // }
+    // return null;
     let x = vector.x;
     let y = vector.y;
-    let items = this.playPage.querySelectorAll(".instrumentcontainer, li");
-    ////////
-    // check if it is black key or white key
-    // step 1: query all the keys
-    // step 2: find if the coordinates are in the keys
-    // step 3: if it is on black key and white key, always return the black key first
-
-    for (let i = 0; i < items.length; i++) {
-      let item = items[i];
-      let rect = item.getBoundingClientRect();
-      if (x > rect.left && x < rect.right && y > rect.top && y < rect.bottom) {
-        console.log("item", item);
-        return item;
+  
+    let blackKeys = this.playPage.querySelectorAll(".key.black");
+    for (let blackKey of blackKeys) {
+      let blackRect = blackKey.getBoundingClientRect();
+      if (x >= blackRect.left && x <= blackRect.right && y >= blackRect.top && y <= blackRect.bottom) {
+        return blackKey;
+      }
+    }
+  
+    let whiteKeys = this.playPage.querySelectorAll(".key.white");
+    for (let whiteKey of whiteKeys) {
+      let whiteRect = whiteKey.getBoundingClientRect();
+      if (x >= whiteRect.left && x <= whiteRect.right && y >= whiteRect.top && y <= whiteRect.bottom) {
+        return whiteKey;
       }
     }
     return null;
